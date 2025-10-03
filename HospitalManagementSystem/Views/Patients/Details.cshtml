@@ -1,0 +1,45 @@
+﻿@model HospitalManagementSystem.Models.Patient
+
+@{
+    ViewData["Title"] = "Details";
+}
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="text-danger">Delete</a>
+}
+
+<h1>Details</h1>
+
+<div class="card p-3">
+    <h4>Patient</h4>
+    <hr />
+    <table class="table table-bordered">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Age)</th>
+            <td>@Html.DisplayFor(model => model.Age)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Disease)</th>
+            <td>@Html.DisplayFor(model => model.Disease)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.Gender)</th>
+            <td>@Html.DisplayFor(Model => Model.Gender)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Doctor)</th>
+            <td>
+                @(Model.Doctor != null ? Model.Doctor.Name : "No Doctor Assigned")
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+    <a asp-action="Create" class="btn btn-primary">Create New Paitent</a>
+</div>

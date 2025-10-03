@@ -1,0 +1,61 @@
+﻿@model HospitalManagementSystem.Models.DoctorCreateViewModel
+
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+<h2>Create Doctor</h2>
+
+<form asp-controller="Doctors" asp-action="Create" method="post">
+    
+    @Html.AntiForgeryToken()
+    
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Specialty" class="form-label"></label>
+        <input asp-for="Specialty" class="form-control" />
+        <span asp-validation-for="Specialty" class="text-danger"></span>
+    </div>
+
+
+ 
+    <div class="mb-3">
+        <label asp-for="Degree" class="form-label"></label>
+        <input asp-for="Degree" class="form-control" />
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    @* <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div> *@
+
+    <div class="mb-3">
+        <label asp-for="YearsOfExperience" class="form-label"></label>
+        <input asp-for="YearsOfExperience" type="number" class="form-control" />
+        <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UserId" class="form-label">Assign User</label>
+        <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(Model.Users, "Id", "Email"))">
+            <option value="">-- Select User --</option>
+        </select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+     <button type="submit" class="btn btn-primary">Create Doctor</button>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

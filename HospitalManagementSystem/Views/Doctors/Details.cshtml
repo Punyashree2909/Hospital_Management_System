@@ -1,0 +1,41 @@
+﻿@model HospitalManagementSystem.Models.Doctor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Doctor Details</h1>
+
+<div>
+    <h4>Doctor Profile</h4>
+    <hr />
+    <table class="table table-bordered">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Specialty)</th>
+            <td>@Html.DisplayFor(model => model.Specialty)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Degree)</th>
+            <td>@Html.DisplayFor(model => model.Degree)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.YearsOfExperience)</th>
+            <td>@Html.DisplayFor(model => model.YearsOfExperience) years</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.User)</th>
+            <td>
+                @(Model.User != null ? Model.User.Email : "No User Assigned")
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

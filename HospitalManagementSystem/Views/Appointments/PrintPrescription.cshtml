@@ -1,0 +1,102 @@
+﻿@model HospitalManagementSystem.Models.Appointment
+@{
+    ViewData["Title"] = "Prescription";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prescription</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+            .header h2 {
+                margin: 0;
+                font-weight: bold;
+            }
+
+            .header h5 {
+                margin: 0;
+                font-style: italic;
+                color: gray;
+            }
+
+            .header p {
+                margin: 2px 0;
+                font-size: 0.9rem;
+                color: #555;
+            }
+
+        .details {
+            margin-bottom: 20px;
+        }
+
+            .details p {
+                margin: 4px 0;
+            }
+
+        .prescription-box {
+            border: 1px solid #333;
+            padding: 15px;
+            min-height: 150px;
+            white-space: pre-wrap;
+            font-size: 1.1rem;
+            background: #fdfdfd;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: right;
+        }
+         print {
+            .btn
+
+        {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>🏥 CityCare Multispeciality Hospital</h2>
+        <h5>Prescription</h5>
+        <p>123, Main Road, New Delhi - 110001</p>
+        <p>📞 +91-9876543210 | ✉️ info@citycarehospital.com</p>
+    </div>
+
+    <div class="details">
+        <p><strong>Patient:</strong> @Model.Patient.Name</p>
+        <p><strong>Doctor:</strong> Dr. @Model.Doctor.Name</p>
+        <p><strong>Date:</strong> @Model.AppointmentDateTime.ToString("dd MMM yyyy")</p>
+    </div>
+    
+
+    <h5>Prescribed Medicines:</h5>
+    <div class="prescription-box">
+        @Model.PrescriptionText
+    </div>
+
+    <div class="footer">
+        <p><strong>Doctor’s Signature:</strong> _____________________</p>
+    </div>
+
+    <button onclick="window.print()" class="btn btn-success mt-3">🖨️ Print Prescription</button>
+</body>
+</html>

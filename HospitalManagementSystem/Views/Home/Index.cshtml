@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<HospitalManagementSystem.Models.Appointment>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Welcome, @Context.Session.GetString("UserName")</h2>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3 text-center">
+            <div class="card-body">
+                <h5 class="card-title">Doctors</h5>
+                <p class="card-text display-5">@ViewBag.DoctorsCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3 text-center">
+            <div class="card-body">
+                <h5 class="card-title">Patients</h5>
+                <p class="card-text display-5">@ViewBag.PatientsCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3 text-center">
+            <div class="card-body">
+                <h5 class="card-title">Appointments</h5>
+                <p class="card-text display-5">@ViewBag.AppointmentsCount</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="mt-4">Recent Appointments</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date & Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appt in Model)
+        {
+            <tr>
+                <td>@appt.Patient?.Name</td>
+                <td>@appt.Doctor?.Name</td>
+                <td>@appt.AppointmentDateTime.ToString("g")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

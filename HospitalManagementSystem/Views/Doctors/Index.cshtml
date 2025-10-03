@@ -1,0 +1,47 @@
+﻿
+
+@model List<HospitalManagementSystem.Models.Doctor>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Doctors List";
+}
+
+<h2>All Doctors</h2>
+
+<!-- Create Doctor Button -->
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">
+        <i class="bi bi-plus-circle"></i> Create Doctor
+    </a>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th>Specialty</th>
+            <th>Degree</th>
+            <th>Experience (Years)</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.Name</td>
+                <td>@doctor.Specialty</td>
+                <td>@doctor.Degree</td>
+                <td>@doctor.YearsOfExperience</td>
+                <td>@doctor.User?.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@doctor.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@doctor.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@doctor.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

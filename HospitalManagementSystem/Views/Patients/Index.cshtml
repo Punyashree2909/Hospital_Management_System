@@ -1,0 +1,48 @@
+﻿@model IEnumerable<HospitalManagementSystem.Models.Patient>
+@if (User.IsInRole("Admin") || User.IsInRole("Nurse"))
+{
+    
+}
+
+
+<h1 class="mb-3">Patients</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-circle"></i> Create New Patient
+    </a>
+</p>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Disease</th>
+            <th>Doctor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+                <td>@item.Gender</td>
+                <td>@item.Disease</td>
+                <td>@item.Doctor?.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>Patient count: @(Model?.Count() ?? 0)</p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HospitalManagementSystem.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Appointments";
+}
+
+<h1 class="mb-3">Appointments</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-circle"></i> Create New Appointment
+    </a>
+</p>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Status</th>
+            <th>Date & Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Patient?.Name</td>
+                <td>@item.Doctor?.Name</td>
+                <td>@item.Status</td>
+                <td>@item.AppointmentDateTime.ToString("dd-MMM-yyyy hh:mm tt")</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="bi bi-pencil"></i> Edit
+                    </a>
+                    <a class="btn btn-sm btn-info text-white" asp-action="Details" asp-route-id="@item.Id">
+                        <i class="bi bi-eye"></i> Details
+                    </a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="bi bi-trash"></i> Delete
+                    </a>
+                    <a class="btn btn-sm btn-success" asp-action="PrintPrescription" asp-route-id="@item.Id">
+                        <i class="bi bi-file-earmark-medical"></i> Prescription
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
